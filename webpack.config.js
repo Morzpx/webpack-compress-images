@@ -36,6 +36,20 @@ module.exports = {
     ],
     module: {
         rules: [
+            // Из svg avif файлы генерируются , в поисках плагина...
+            // P.S. а может это и нахуй не надо
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: 'svg-url-loader',
+                        options: {
+                            limit: 8192, // лимит на размер файла
+                            name: '[name].[ext]', // имя файла с оригинальным расширением
+                        },
+                    },
+                ],
+            },
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 include: path.resolve(__dirname, 'src/images'),
