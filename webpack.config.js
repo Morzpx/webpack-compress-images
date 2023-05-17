@@ -12,18 +12,7 @@ module.exports = {
     },
     plugins: [
         // Для генерации формата Avif
-        new ImageminAvifWebpackPlugin({
-            detailedLogs: true,
-            overrideExtension: true,
-            config: [{
-                test: /\.(jpe?g|png|gif)/,
-                options: {
-                    quality:  65
-                }
-            }],
-        }),
-        // Для генерации формата webP
-        // new ImageminWebpWebpackPlugin({
+        // new ImageminAvifWebpackPlugin({
         //     detailedLogs: true,
         //     overrideExtension: true,
         //     config: [{
@@ -33,6 +22,17 @@ module.exports = {
         //         }
         //     }],
         // }),
+        //Для генерации формата webP
+        new ImageminWebpWebpackPlugin({
+            detailedLogs: true,
+            overrideExtension: true,
+            config: [{
+                test: /\.(jpe?g|png|gif)/,
+                options: {
+                    quality:  85
+                }
+            }],
+        }),
     ],
     module: {
         rules: [
@@ -66,7 +66,7 @@ module.exports = {
                         options: {
                             mozjpeg: {
                                 progressive: true,
-                                quality: 65,
+                                quality: 85,
                             },
                             optipng: {
                                 enabled: false,
@@ -79,7 +79,7 @@ module.exports = {
                                 interlaced: false,
                             },
                             webp: {
-                                quality: 75
+                                quality: 85
                             }
                         },
                     },
